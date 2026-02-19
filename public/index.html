@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Management System</title>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BACKGROUND ELEMENTS -->
+    <div class="stars"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="lab-glow"></div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen">
+        <div class="welcome-container">
+            <h1 class="welcome-title">WELCOME TO LAB</h1>
+            <p class="welcome-subtitle">Explore the Future of Innovation</p>
+            <button class="enter-btn" onclick="enterLab()">ENTER LAB</button>
+        </div>
+    </div>
+
+    <!-- Lab Screen -->
+    <div id="labScreen">
+        <button class="back-btn" onclick="backToWelcome()">← Back</button>
+        
+        <h1>Lab Entry/Exit Management System</h1>
+        
+        <div class="section">
+            <h2>🔬 Generate QR Code</h2>
+            <div class="flex">
+                <select id="userSelect">
+                    <option value="">Select User</option>
+                </select>
+                <input type="text" id="customId" placeholder="Or custom ID">
+                <button onclick="generateQR()">Generate QR</button>
+                <button onclick="downloadQR()" id="downloadBtn" disabled>Download QR</button>
+            </div>
+            <div id="qrCode"></div>
+        </div>
+
+        <div class="section">
+            <h2>📱 Scan QR / Manual Entry</h2>
+            <div style="text-align: center;">
+                <input type="text" id="rfidInput" placeholder="Enter/Scan ID">
+                <button onclick="logEvent()">Log Entry/Exit</button>
+                <br><br>
+                <button id="qrButton" onclick="toggleQRScanner()">Start QR Scanner</button>
+                <div id="qr-reader"></div>
+                <div id="status"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Entry/Exit Logs</h2>
+            <table id="logTable">
+                <thead>
+                    <tr>
+                     <th>Log ID</th>
+                     <th>Register No</th>
+                     <th>User</th>
+                     <th>Role</th>
+                     <th>Action</th>
+                     <th>Status</th>
+                    <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
